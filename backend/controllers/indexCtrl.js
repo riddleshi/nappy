@@ -1,5 +1,5 @@
 const passport = require('../config/passport')
-const db = require('../db/queries')
+const User = require('../models/User')
 
 exports.ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {

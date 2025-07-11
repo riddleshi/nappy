@@ -1,4 +1,4 @@
-const db = require('../db/queries');
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
 exports.registerUser = async (req, res) => {
@@ -10,7 +10,7 @@ exports.registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the new user into the database
-    await db.registerNewUser(username, hashedPassword);
+    await User.registerNewUser(username, hashedPassword);
 
     res.redirect('/log-in');
   } catch (error) {

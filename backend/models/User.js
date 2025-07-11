@@ -1,4 +1,4 @@
-const pool = require('./pool'); 
+const pool = require('../db/pool');
 
 async function getUserByUsername(username) {
   const { rows } = await pool.query("SELECT * FROM Users WHERE name = $1", [username]);
