@@ -17,7 +17,7 @@ function Login() {
       body: JSON.stringify({ username, password })
     });
     if (res.ok) {
-      navigate('/');
+      navigate('/home');
     } else {
       setMessage('Login failed.');
     }

@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const User = require('../models/User');
 
 exports.ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
@@ -10,3 +10,4 @@ exports.ensureAuthenticated = function(req, res, next) {
 exports.getUserView = (req, res) => {
   res.json({ user: req.user });
 };
+

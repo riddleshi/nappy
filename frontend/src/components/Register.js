@@ -16,7 +16,7 @@ function Register() {
       body: JSON.stringify({ username, password })
     });
     if (res.ok) {
-      navigate('/login');
+      navigate('/log-in');
     } else {
       setMessage('Registration failed.');
     }

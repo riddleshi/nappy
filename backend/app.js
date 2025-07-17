@@ -7,6 +7,7 @@ const cors = require('cors');
 const indexRouter = require('./routes/indexRouter');
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
+const homeRouter = require('./routes/homeRouter');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
@@ -21,9 +22,9 @@ app.use(cors({
 }));
 
 app.use('/log-in', loginRouter);
-app.use('/', indexRouter);
 app.use('/register', registerRouter);
-
+app.use('/home', homeRouter);
+app.use('/', indexRouter);
 
 app.listen(8080, () => {
     console.log('Server is running on port 8080');

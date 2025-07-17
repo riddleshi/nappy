@@ -4,5 +4,4 @@ const idxController = require('../controllers/indexCtrl')
 
 indexRouter.get('/', idxController.ensureAuthenticated, idxController.getUserView)
 
-
 module.exports = indexRouter
