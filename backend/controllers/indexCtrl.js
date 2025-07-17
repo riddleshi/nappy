@@ -1,4 +1,3 @@
-const passport = require('../config/passport')
 const User = require('../models/User')
 
 exports.ensureAuthenticated = function(req, res, next) {
@@ -9,5 +8,5 @@ exports.ensureAuthenticated = function(req, res, next) {
 };
 
 exports.getUserView = (req, res) => {
-  res.render('index', { user: req.user });
+  res.json({ user: req.user });
 };

@@ -1,7 +1,7 @@
 const passport = require('../config/passport');
 
 exports.getLogin = (req, res) => {
-  res.render('login');
+  res.json({ message: "Login endpoint" });
 };
 
 exports.logIn = passport.authenticate('local', {

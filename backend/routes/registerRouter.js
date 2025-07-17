@@ -2,8 +2,9 @@ const express = require('express');
 const registerRouter = express.Router();
 const registerController = require('../controllers/registerCtrl');
 
+// Return a simple JSON response for GET /register
 registerRouter.get('/', (req, res) => {
-    res.render('registerUser')
+    res.json({ message: "Register endpoint" });
 });
 
 registerRouter.post('/', registerController.registerUser);
