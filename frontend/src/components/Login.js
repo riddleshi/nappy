@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,32 +17,34 @@ function Login() {
       body: JSON.stringify({ username, password })
     });
     if (res.ok) {
-      setMessage('Login successful!');
+      navigate('/');
     } else {
       setMessage('Login failed.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-        required
-      /><br/>
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        required
-      /><br/>
-      <button type="submit">Login</button>
-      {message && <div>{message}</div>}
-    </form>
+    <div className="page-background login-bg">
+      <form className="form-container" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          required
+        /><br/>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+        /><br/>
+        <button type="submit">Login</button>
+        {message && <div>{message}</div>}
+      </form>
+    </div>
   );
 }
 

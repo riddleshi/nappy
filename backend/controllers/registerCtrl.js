@@ -6,15 +6,11 @@ exports.registerUser = async (req, res) => {
   console.log("Registering user:", username, password );
 
   try {
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert the new user into the database
     await User.registerNewUser(username, hashedPassword);
-
-    res.redirect('/log-in');
+    res.status(201).json({ message: 'Registration successful' }); // <-- send JSON
   } catch (error) {
     console.error("Error registering user:", error);
-    res.status(500).send('Registration error');
+    res.status(500).json({ message: 'Registration error' }); // <-- send JSON
   }
 };
