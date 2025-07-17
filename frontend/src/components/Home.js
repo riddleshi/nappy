@@ -51,14 +51,6 @@ function Home() {
           <button type="submit">Add Sleep Log</button>
         </form>
         {message && <div>{message}</div>}
-        <h3>Your Sleep Logs</h3>
-        <ul>
-          {logs.map(log => (
-            <li key={log.sleeplog_id}>
-              {log.date}: {log.sleep_time} - {log.wake_time} | Mood: {log.mood}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

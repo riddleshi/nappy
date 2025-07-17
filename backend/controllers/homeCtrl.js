@@ -4,7 +4,7 @@ const SleepLog = require('../models/SleepLog');
 
 exports.addSleepLog = async (req, res) => {
   const { date, sleep_time, wake_time, mood } = req.body;
-  const username = req.user.username; 
+  const username = req.user.name; 
   console.log("POST /home/sleeplogs hit!");  
   if (!username) {
     return res.status(401).json({ message: 'Unauthorized' });
@@ -21,7 +21,7 @@ exports.addSleepLog = async (req, res) => {
 
 
 exports.getSleepLogs = async (req, res) => {
-  const username = req.user.username;
+  const username = req.user.name;
   console.log('req.user:', req.user);
   if (!username) {
     return res.status(401).json({ message: 'Unauthorized' });
