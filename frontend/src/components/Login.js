@@ -26,7 +26,7 @@ function Login() {
   return (
     <div className="page-background login-bg">
       <form className="form-container" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>Log in</h2>
         <input
           type="text"
           placeholder="Username"
@@ -41,7 +41,7 @@ function Login() {
           onChange={e => setPassword(e.target.value)}
           required
         /><br/>
-        <button type="submit">Login</button>
+        <button type="submit">Log in</button>
         {message && <div>{message}</div>}
       </form>
     </div>

@@ -21,13 +21,20 @@ exports.addSleepLog = async (req, res) => {
 
 
 exports.getSleepLogs = async (req, res) => {
-  const username = req.user.name;
-  console.log('req.user:', req.user);
+  const username = req.user?.name;
+  const { month } = req.query; 
   if (!username) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
   try {
-    const logs = await SleepLog.getSleepLogsByUsername(username);
+    let logs;
+    if (month) {
+      
+      logs = await SleepLog.getSleepLogsByMonth(username, month);
+    } else {
+      
+      logs = await SleepLog.getSleepLogsByUsername(username);
+    }
     res.json({ logs });
   } catch (error) {
     console.error('Error fetching sleep logs:', error);

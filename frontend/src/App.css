@@ -23,9 +23,11 @@ body {
 .home-bg {
   background-image: url('../public/sleep_gesture.webp');
 }
-
+.index-bg {
+  background-image: url('../public/sleep.jpg');
+}
 .login-bg {
-  background-image: url('../public/sleeping_girl.jpg');
+  background-image: url('../public/sleeping_man.webp');
 }
 
 .register-bg {
@@ -52,14 +54,64 @@ input, button {
   
 }
 button {
-  background: #4a90e2;
+  background: rgb(14, 48, 86);
   color: white;
   border: none;
   cursor: pointer;
   
 }
 button:hover {
-  background: #357ab8;
+  background: #0a355c;
   
+}
+
+
+.index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.92);
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  min-width: 320px;
+  max-width: 90vw;
+  opacity: 0.76;
+}
+
+.nappy-logo {
+  font-size: 4rem;
+  font-family: "Lucida Console", "Courier New", 'monospace';
+  color: rgb(5, 24, 46);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 8px #b3d1f7, 0 0px 0px #fff;
+}
+
+.index-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.index-btn {
+  display: block;
+  text-align: center;
+  background: #07213f;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 0.8rem 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(74,144,226,0.12);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.index-btn:hover {
+  background: #357ab8;
+  transform: translateY(-2px) scale(1.04);
 }
 

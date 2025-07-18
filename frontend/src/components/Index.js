@@ -4,10 +4,14 @@ import '../App.css';
 
 function Index() {
   return (
-    <div className="page-background home-bg ">
-      <h1>Nappy</h1> 
-      <Link to="/login">Login</Link> |
-      <Link to="/register">Register</Link>
+    <div className="page-background index-bg">
+      <div className="index-container">
+        <h1 className="nappy-logo">Nappy</h1>
+        <div className="index-buttons">
+          <Link to="/log-in" className="index-btn">Login</Link>
+          <Link to="/register" className="index-btn">Register</Link>
+        </div>
+      </div>
     </div>
   );
 }

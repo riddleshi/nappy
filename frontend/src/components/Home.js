@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import SleepChart from './SleepChart';
+import AverageSleep from './AverageSleep';
 
 function Home() {
   const [date, setDate] = useState('');
@@ -7,23 +9,55 @@ function Home() {
   const [mood, setMood] = useState('');
   const [message, setMessage] = useState('');
   const [logs, setLogs] = useState([]);
+  const [showChart, setShowChart] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState('');
 
 
-  useEffect(() => {
-    fetch('http://localhost:8080/home/sleeplogs', {
-      credentials: 'include'
-    })
+  const fetchLogs = (month = '') => {
+    let url = 'http://localhost:8080/home/sleeplogs';
+    if (month) url += `?month=${month}`;
+    fetch(url, { credentials: 'include' })
       .then(res => res.json())
       .then(data => setLogs(data.logs || []));
+  };
+
+  useEffect(() => {
+    fetchLogs();
   }, []);
+
+  const handleMonthChange = (e) => {
+    setSelectedMonth(e.target.value);
+    fetchLogs(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Parse times as minutes since midnight
+    const [sleepHour, sleepMin] = sleepTime.split(':').map(Number);
+    const [wakeHour, wakeMin] = wakeTime.split(':').map(Number);
+    const sleepMinutes = sleepHour * 60 + sleepMin;
+    const wakeMinutes = wakeHour * 60 + wakeMin;
+
+    // Create a Date object from the selected date 
+    const [year, month, day] = date.split('-').map(Number);
+    let wakeDateObj = new Date(year, month - 1, day);
+
+    // If wake time is less than sleep time, it's the next day
+    if (wakeMinutes <= sleepMinutes) {
+      wakeDateObj.setDate(wakeDateObj.getDate() + 1);
+    }
+    wakeDateObj.setHours(wakeHour);
+    wakeDateObj.setMinutes(wakeMin);
+
+    
+    const wakeDateISO = wakeDateObj.toISOString().split('T')[0]; 
+
     const res = await fetch('http://localhost:8080/home/sleeplogs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ date, sleep_time: sleepTime, wake_time: wakeTime, mood })
+      body: JSON.stringify({ date: wakeDateISO, sleep_time: sleepTime, wake_time: wakeTime, mood })
     });
     if (res.ok) {
       setMessage('Sleep log added!');
@@ -51,6 +85,24 @@ function Home() {
           <button type="submit">Add Sleep Log</button>
         </form>
         {message && <div>{message}</div>}
+
+        <button onClick={() => setShowChart(!showChart)}>
+          Visualize your sleep history
+        </button>
+        {showChart && (
+          <>
+            <label>
+              Select Month:&nbsp;
+              <input
+                type="month"
+                value={selectedMonth}
+                onChange={handleMonthChange}
+              />
+            </label>
+            <SleepChart logs={logs} />
+          </>
+        )}
+        <AverageSleep logs={logs} />
       </div>
     </div>
   );

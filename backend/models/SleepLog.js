@@ -16,7 +16,20 @@ async function getSleepLogsByUsername(username) {
   return rows;
 }
 
+async function getSleepLogsByMonth(username, month) {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM sleeplogs
+    WHERE username = $1 AND TO_CHAR(date, 'YYYY-MM') = $2
+    ORDER BY date DESC
+    `,
+    [username, month]
+  );
+  return rows;
+}
+
 module.exports = {
   addSleepLog,
   getSleepLogsByUsername,
+  getSleepLogsByMonth,
 };
