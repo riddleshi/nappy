@@ -11,6 +11,7 @@ function Home() {
   const [logs, setLogs] = useState([]);
   const [showChart, setShowChart] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [showAverage, setShowAverage] = useState(false);
 
 
   const fetchLogs = (month = '') => {
@@ -29,6 +30,13 @@ function Home() {
     setSelectedMonth(e.target.value);
     fetchLogs(e.target.value);
   };
+
+  function formatLocalDate(dateObj) {
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,8 +58,8 @@ function Home() {
     wakeDateObj.setHours(wakeHour);
     wakeDateObj.setMinutes(wakeMin);
 
-    
-    const wakeDateISO = wakeDateObj.toISOString().split('T')[0]; 
+    // Use the wake date as the "sleep log date" (local time)
+    const wakeDateISO = formatLocalDate(wakeDateObj);
 
     const res = await fetch('http://localhost:8080/home/sleeplogs', {
       method: 'POST',
@@ -102,8 +110,15 @@ function Home() {
             <SleepChart logs={logs} />
           </>
         )}
-        <AverageSleep logs={logs} />
+        <button
+          className="average-btn"
+          onClick={() => setShowAverage(!showAverage)}
+        >
+          Average sleep per month
+        </button>
+        {showAverage && <AverageSleep logs={logs} />}
       </div>
+      <img src="/cloud.webp" className="cloud" alt="moving cloud" />
     </div>
   );
 }
