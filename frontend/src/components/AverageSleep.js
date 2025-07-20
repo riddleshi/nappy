@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 function getSleepDuration(sleepTime, wakeTime) {
   const [sh, sm] = sleepTime.split(':').map(Number);
   const [wh, wm] = wakeTime.split(':').map(Number);
@@ -18,7 +17,6 @@ function AverageSleep({ logs }) {
     const month = e.target.value;
     setSelectedMonth(month);
 
-    // Filter logs for the selected month (YYYY-MM)
     const filtered = logs.filter(log => log.date.startsWith(month));
     if (filtered.length === 0) {
       setAverage(null);
@@ -44,11 +42,18 @@ function AverageSleep({ logs }) {
       </label>
       {selectedMonth && (
         average !== null ? (
-          <div>
-            <strong>Average sleep for {selectedMonth}:</strong> {average} hours
+          <div className="average-sleep-card">
+            <span>Average sleep for {selectedMonth}:</span>
+            <br />
+            <span style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
+              {average} hours
+              <span className="zzz">💤</span>
+            </span>
           </div>
         ) : (
-          <div>No sleep logs for this month.</div>
+          <div className="average-sleep-card" style={{ color: '#888' }}>
+            No sleep logs for this month.
+          </div>
         )
       )}
     </div>
