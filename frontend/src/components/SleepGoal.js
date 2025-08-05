@@ -64,7 +64,7 @@ function SleepGoal() {
       setCalcResults(
         `To wake up not feeling like a zombie at ${formatTime(hour, minute)}, it is recommended go to bed at one of the following times:\n\n` +
         results.slice(2, 5).join('\n') + `\n`+
-        `\nIf you have different arrangements, you may also choose one of the following times:\n\n` +
+        `\nIf you hate yourself, you may also choose one of the following times:\n\n` +
         [results[0], results[1], results[5], results[6]].join('\n') + `\n`+
         `\nThese times are calculated assuming you take 15 minutes to drift off while overthinking life. Waking up in between 90-minute sleep cycles helps avoid feeling like you got hit by a bus. Aim for 5–6 cycles unless you enjoy emotional instability and caffeine dependency.`
       );
@@ -78,7 +78,7 @@ function SleepGoal() {
       setCalcResults(
         `If you crash into bed at ${formatTime(hour, minute)}, you are advised to get up at one of the following times for a non-zombie experience:\n\n` +
         results.slice(2, 5).join('\n') + `\n`+
-        `\nIf you have different arrangements, you may also choose one of the following times:\n\n` +
+        `\nIf you hate yourself, you may also choose one of the following times:\n\n` +
         [results[0], results[1], results[5], results[6]].join('\n') + `\n`+
         `\nThese times are calculated assuming you take 15 minutes to drift off while overthinking life. Waking up in between 90-minute sleep cycles helps avoid feeling like you got hit by a bus. Aim for 5–6 cycles unless you enjoy emotional instability and caffeine dependency.`
       );
