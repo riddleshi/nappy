@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SleepChart from './SleepChart';
 import AverageSleep from './AverageSleep';
 
@@ -13,6 +14,7 @@ function Home() {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [showAverage, setShowAverage] = useState(false);
   const [nightMode, setNightMode] = useState(false);
+  const navigate = useNavigate();
 
 
   const fetchLogs = (month = '') => {
@@ -118,6 +120,12 @@ function Home() {
           Average sleep per month
         </button>
         {showAverage && <AverageSleep logs={logs} />}
+        <button
+  className={`sleep-goal-btn${nightMode ? ' night' : ''}`}
+  onClick={() => navigate('/sleep-goal')}
+>
+  Sleep Goals
+</button>
       </div>
       <img src="/cloud.webp" className="cloud" alt="moving cloud" />
       <button

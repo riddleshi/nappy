@@ -8,6 +8,7 @@ const indexRouter = require('./routes/indexRouter');
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const homeRouter = require('./routes/homeRouter');
+const sleepGoalRouter = require('./routes/sleepGoalRouter');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
@@ -24,6 +25,7 @@ app.use(cors({
 app.use('/log-in', loginRouter);
 app.use('/register', registerRouter);
 app.use('/home', homeRouter);
+app.use('/sleep-goal', sleepGoalRouter);
 app.use('/', indexRouter);
 
 app.listen(8080, () => {
