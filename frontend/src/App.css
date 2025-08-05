@@ -159,3 +159,26 @@ button:hover {
   100% { transform: translateY(-8px);}
 }
 
+/* Night mode for home page */
+.home-bg.night {
+  background-image: url('../public/sleep_night.webp'); /* Use your night image */
+  background-color: #0a1830;
+}
+
+.night .form-container {
+  background: rgba(2, 5, 10, 0.93);
+  color: #e3eaf8;
+}
+
+.night input, .night button {
+  background: #1a2740;
+  color: #e0eafc;
+  border: 1px solid #3a4a6b;
+}
+.night button {
+  background: #2a3a5c;
+}
+.night button:hover {
+  background: #1a2740;
+}
+
