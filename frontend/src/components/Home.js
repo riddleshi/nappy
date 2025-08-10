@@ -120,11 +120,17 @@ function Home() {
           Average sleep per month
         </button>
         {showAverage && <AverageSleep logs={logs} />}
-        <button
+<button
   className={`sleep-goal-btn${nightMode ? ' night' : ''}`}
   onClick={() => navigate('/sleep-goal')}
 >
   Sleep Goals
+</button>
+<button
+  className={`sleep-goal-btn${nightMode ? ' night' : ''}`}
+  onClick={() => navigate('/dream-journal')}
+>
+  Dream Journal
 </button>
       </div>
       <img src="/cloud.webp" className="cloud" alt="moving cloud" />

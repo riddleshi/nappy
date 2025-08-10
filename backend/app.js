@@ -9,6 +9,7 @@ const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const homeRouter = require('./routes/homeRouter');
 const sleepGoalRouter = require('./routes/sleepGoalRouter');
+const dreamJournalRouter = require('./routes/dreamJournalRouter');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
@@ -26,6 +27,7 @@ app.use('/log-in', loginRouter);
 app.use('/register', registerRouter);
 app.use('/home', homeRouter);
 app.use('/sleep-goal', sleepGoalRouter);
+app.use('/dream-journal', dreamJournalRouter);
 app.use('/', indexRouter);
 
 app.listen(8080, () => {

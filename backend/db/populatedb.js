@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS dream_journals (
   date DATE NOT NULL,
   dream_text TEXT NOT NULL,
   ai_response TEXT
+  username VARCHAR(100) REFERENCES Users(name);
+
 );
 `;
 async function main() {
