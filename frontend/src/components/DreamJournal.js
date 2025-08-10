@@ -60,7 +60,7 @@ function DreamJournal() {
   };
 
   return (
-    <div className="page-background" style={{ minHeight: '100vh' }}>
+    <div className="page-background dream-journal-bg" style={{ minHeight: '100vh' }}>
       <div className="form-container" style={{ maxWidth: 500 }}>
         <h2>Dream Journal</h2>
         <form onSubmit={handleSubmit}>

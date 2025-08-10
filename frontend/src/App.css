@@ -36,6 +36,9 @@ body {
 .sleep-goal-bg {
   background-image: url('../public/sleep.jpg');
 }
+.dream-journal-bg {
+  background-image: url('../public/funky.jpg');
+}
 
 
 .form-container {
