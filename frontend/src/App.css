@@ -215,3 +215,65 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* SleepGoal page container */
+.sleep-goal-form-container {
+  min-width: 320px;
+  max-width: 400px;
+  margin-top: 2rem;
+}
+
+/* SleepGoal page buttons */
+.sleep-goal-btn,
+.average-btn {
+  width: 100%;
+  margin-top: 1.2rem;
+  font-size: 1.08rem;
+}
+
+/* Highlight selected goal option */
+.goal-option-selected {
+  background: #4a90e2 !important;
+}
+
+/* Calculator modal/box */
+.sleep-calculator-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #e0eafc;
+  color: #07213f;
+  font-size: 1.2rem;
+}
+.sleep-calculator-box.night {
+  background: #1a2740;
+  color: #e0eafc;
+}
+
+/* Calculator form */
+.sleep-calculator-box form input[type="time"] {
+  font-size: 1.1rem;
+  width: auto;
+  display: inline-block;
+}
+.sleep-calculator-box form button {
+  margin-left: 1rem;
+  font-size: 1.1rem;
+  width: auto;
+  display: inline-block;
+}
+
+/* Calculator result */
+.sleep-calculator-result {
+  margin-top: 1rem;
+  white-space: pre-line;
+  font-family: monospace;
+}
+
+/* Calculator close button */
+.sleep-calculator-close-btn {
+  margin-top: 1rem;
+  background: #aaa;
+  color: #fff;
+  font-size: 1.1rem;
+}
+

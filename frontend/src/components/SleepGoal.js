@@ -63,9 +63,9 @@ function SleepGoal() {
       }
       setCalcResults(
         `To wake up not feeling like a zombie at ${formatTime(hour, minute)}, it is recommended to go to bed at one of the following times:\n\n` +
-        results.slice(2, 5).join('\n') + `\n`+
+        results.slice(0, 4).join('\n') + `\n`+
         `\nIf you hate yourself, you may also choose one of the following times:\n\n` +
-        [results[0], results[1], results[5], results[6]].join('\n') + `\n`+
+        [results[4], results[5], results[6], results[7]].join('\n') + `\n`+
         `\nThese times are calculated assuming you take 15 minutes to drift off while overthinking life. Waking up in between 90-minute sleep cycles helps avoid feeling like you got hit by a bus. Aim for 5–6 cycles unless you enjoy emotional instability and caffeine dependency.`
       );
     } else if (calcMode === 'bed') {
@@ -77,9 +77,9 @@ function SleepGoal() {
       }
       setCalcResults(
         `If you crash into bed at ${formatTime(hour, minute)}, you are advised to get up at one of the following times for a non-zombie experience:\n\n` +
-        results.slice(2, 5).join('\n') + `\n`+
+        results.slice(0, 4).join('\n') + `\n`+
         `\nIf you hate yourself, you may also choose one of the following times:\n\n` +
-        [results[0], results[1], results[5], results[6]].join('\n') + `\n`+
+        [results[4], results[5], results[6], results[7]].join('\n') + `\n`+
         `\nThese times are calculated assuming you take 15 minutes to drift off while overthinking life. Waking up in between 90-minute sleep cycles helps avoid feeling like you got hit by a bus. Aim for 5–6 cycles unless you enjoy emotional instability and caffeine dependency.`
       );
     }
@@ -100,25 +100,22 @@ function SleepGoal() {
       >
         {nightMode ? '☀️' : '🌙'}
       </button>
-      <div className="form-container" style={{ minWidth: 320, maxWidth: 400, marginTop: '2rem' }}>
+      <div className="form-container sleep-goal-form-container">
         <h2>Sleep Goal</h2>
         <button
-          className={`average-btn${nightMode ? ' night' : ''}`}
-          style={{ width: '100%' }}
+          className={`average-btn${nightMode ? ' night' : ''} sleep-goal-btn`}
           onClick={fetchGoal}
         >
           Show Current Sleep Goal
         </button>
         <button
-          className={`average-btn${nightMode ? ' night' : ''}`}
-          style={{ width: '100%' }}
+          className={`average-btn${nightMode ? ' night' : ''} sleep-goal-btn`}
           onClick={() => { setEditMode(true); setShowGoal(false); setMessage(''); }}
         >
           Edit Sleep Goal
         </button>
         <button
-          className={`average-btn${nightMode ? ' night' : ''}`}
-          style={{ width: '100%' }}
+          className={`average-btn${nightMode ? ' night' : ''} sleep-goal-btn`}
           onClick={() => { setShowCalculator(true); setCalcMode(null); setCalcTime(''); setCalcResults(null); }}
         >
           Sleep Cycle Calculator
@@ -137,11 +134,9 @@ function SleepGoal() {
             {[6, 7, 8, 9, 10].map(opt => (
               <button
                 key={opt}
-                className={`average-btn${nightMode ? ' night' : ''}`}
+                className={`average-btn${nightMode ? ' night' : ''} sleep-goal-btn${goal === opt ? ' goal-option-selected' : ''}`}
                 style={{
-                  width: '100%',
-                  marginBottom: '0.5rem',
-                  background: goal === opt ? '#4a90e2' : undefined
+                  marginBottom: '0.5rem'
                 }}
                 onClick={() => updateGoal(opt)}
               >
@@ -155,14 +150,7 @@ function SleepGoal() {
         )}
 
         {showCalculator && (
-          <div style={{
-            marginTop: '1.5rem',
-            padding: '1rem',
-            borderRadius: '10px',
-            background: nightMode ? '#1a2740' : '#e0eafc',
-            color: nightMode ? '#e0eafc' : '#07213f',
-            fontSize: '1.2rem'
-          }}>
+          <div className={`sleep-calculator-box${nightMode ? ' night' : ''}`}>
             <div style={{ marginBottom: '1rem' }}>
               <button
                 style={{ marginRight: '1rem' }}
