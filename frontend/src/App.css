@@ -243,10 +243,12 @@ button:hover {
   background: #e0eafc;
   color: #07213f;
   font-size: 1.2rem;
+  align-items: center;
 }
 .sleep-calculator-box.night {
   background: #1a2740;
   color: #e0eafc;
+  align-items: center;
 }
 
 /* Calculator form */
@@ -254,12 +256,14 @@ button:hover {
   font-size: 1.1rem;
   width: auto;
   display: inline-block;
+  align-items: center;
 }
 .sleep-calculator-box form button {
   margin-left: 1rem;
   font-size: 1.1rem;
   width: auto;
   display: inline-block;
+  align-items: center;
 }
 
 /* Calculator result */
@@ -267,6 +271,7 @@ button:hover {
   margin-top: 1rem;
   white-space: pre-line;
   font-family: monospace;
+  align-items: center;
 }
 
 /* Calculator close button */
