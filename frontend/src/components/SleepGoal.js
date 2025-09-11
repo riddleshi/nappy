@@ -95,25 +95,6 @@ function SleepGoal() {
     <div className={`page-background sleep-goal-bg${nightMode ? ' night' : ''}`}>
       <button
         className="night-mode-btn"
-        style={{
-          position: 'absolute',
-          top: 24,
-          left: 24,
-          zIndex: 10,
-          width: '44px',
-          height: '44px',
-          borderRadius: '50%',
-          background: '#222',
-          color: '#fff',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
-          transition: 'background 0.2s, transform 0.2s'
-        }}
         onClick={() => setNightMode(n => !n)}
         title={nightMode ? 'Day mode' : 'Night mode'}
       >
