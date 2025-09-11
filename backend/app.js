@@ -13,7 +13,7 @@ const dreamJournalRouter = require('./routes/dreamJournalRouter');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
-app.use(express.static('public')); // Serve static files from the "public" folder
+app.use(express.static('public')); 
 
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.session());
