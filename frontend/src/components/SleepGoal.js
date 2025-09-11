@@ -62,7 +62,7 @@ function SleepGoal() {
         results.push(`${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} (${cycles[i]} sleep cycles)`);
       }
       setCalcResults(
-        `To wake up not feeling like a zombie at ${formatTime(hour, minute)}, it is recommended go to bed at one of the following times:\n\n` +
+        `To wake up not feeling like a zombie at ${formatTime(hour, minute)}, it is recommended to go to bed at one of the following times:\n\n` +
         results.slice(2, 5).join('\n') + `\n`+
         `\nIf you hate yourself, you may also choose one of the following times:\n\n` +
         [results[0], results[1], results[5], results[6]].join('\n') + `\n`+

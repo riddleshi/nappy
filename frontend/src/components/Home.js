@@ -34,41 +34,28 @@ function Home() {
     fetchLogs(e.target.value);
   };
 
-  function formatLocalDate(dateObj) {
-    const year = dateObj.getFullYear();
-    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-    const day = String(dateObj.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Parse times as minutes since midnight
-    const [sleepHour, sleepMin] = sleepTime.split(':').map(Number);
     const [wakeHour, wakeMin] = wakeTime.split(':').map(Number);
-    const sleepMinutes = sleepHour * 60 + sleepMin;
-    const wakeMinutes = wakeHour * 60 + wakeMin;
+   
 
     // Create a Date object from the selected date 
     const [year, month, day] = date.split('-').map(Number);
     let wakeDateObj = new Date(year, month - 1, day);
 
-    // If wake time is less than sleep time, it's the next day
-    if (wakeMinutes <= sleepMinutes) {
-      wakeDateObj.setDate(wakeDateObj.getDate() + 1);
-    }
+  
     wakeDateObj.setHours(wakeHour);
     wakeDateObj.setMinutes(wakeMin);
 
-    // Use the wake date as the "sleep log date" (local time)
-    const wakeDateISO = formatLocalDate(wakeDateObj);
+    // Use the selected date as the "sleep log date" (the date you went to bed)
+    const sleepDateISO = date; // already in YYYY-MM-DD format
 
     const res = await fetch('http://localhost:8080/home/sleeplogs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ date: wakeDateISO, sleep_time: sleepTime, wake_time: wakeTime, mood })
+      body: JSON.stringify({ date: sleepDateISO, sleep_time: sleepTime, wake_time: wakeTime, mood })
     });
     if (res.ok) {
       setMessage('Sleep log added!');
