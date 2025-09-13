@@ -282,3 +282,55 @@ button:hover {
   font-size: 1.1rem;
 }
 
+.dream-journal-form-container {
+  max-width: 500px;
+}
+
+.dream-journal-textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.dream-journal-save-btn {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.dream-journal-toggle-btn {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.dream-journal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dream-journal-list-item {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.7rem;
+}
+
+.dream-journal-date {
+  font-weight: bold;
+}
+
+.dream-journal-interpret-btn {
+  margin-top: 0.5rem;
+}
+
+.dream-journal-ai-box {
+  margin-top: 0.7rem;
+  background: #f0f4fa;
+  padding: 0.7rem;
+  border-radius: 8px;
+}
+.dream-journal-ai-box strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+

@@ -39,7 +39,6 @@ function DreamJournal() {
     }
   };
 
-  // AI interpretation handler
   const handleInterpret = async (dreamObj) => {
     setAiLoading(dreamObj.id);
     const res = await fetch('http://localhost:8080/dream-journal/interpret', {
@@ -61,44 +60,43 @@ function DreamJournal() {
 
   return (
     <div className="page-background dream-journal-bg" style={{ minHeight: '100vh' }}>
-      <div className="form-container" style={{ maxWidth: 500 }}>
+      <div className="form-container dream-journal-form-container">
         <h2>Dream Journal</h2>
         <form onSubmit={handleSubmit}>
           <label>Date:</label>
           <input type="date" value={date} onChange={e => setDate(e.target.value)} required />
-          
           <textarea
             value={dream}
             onChange={e => setDream(e.target.value)}
             rows={5}
-            style={{ width: '100%', marginBottom: '1rem' }}
+            className="dream-journal-textarea"
             required
           />
-          <button type="submit" style={{ marginBottom: '1rem', marginTop: '2rem', fontSize: '1.1rem' }}>Save Dream</button>
+          <button type="submit" className="dream-journal-save-btn">Save Dream</button>
         </form>
         {message && <div style={{ marginTop: '1rem' }}>{message}</div>}
         <button
           onClick={() => setShowDreams(v => !v)}
-          style={{ marginBottom: '1rem', marginTop: '2rem', fontSize: '1.1rem' }}
+          className="dream-journal-toggle-btn"
         >
           What have I been dreaming of?
         </button>
         {showDreams && (
-          <ul>
+          <ul className="dream-journal-list">
             {dreams.map(d => (
-              <li key={d.id} style={{ marginBottom: '1.2rem', borderBottom: '1px solid #ccc', paddingBottom: '0.7rem' }}>
-                <strong>
+              <li key={d.id} className="dream-journal-list-item">
+                <span className="dream-journal-date">
                   {new Date(d.date).toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric' })}:
-                </strong>
+                </span>
                 <div style={{ whiteSpace: 'pre-line' }}>{d.dream_text}</div>
                 <button
-                  style={{ marginTop: '0.5rem' }}
+                  className="dream-journal-interpret-btn"
                   onClick={() => handleInterpret(d)}
                   disabled={aiLoading === d.id}
                 >
                   {aiLoading === d.id ? "Interpreting..." : "Let AI Interpret this dream"}
                 </button>
-                <div style={{ marginTop: '0.7rem', background: '#f0f4fa', padding: '0.7rem', borderRadius: '8px' }}>
+                <div className="dream-journal-ai-box">
                   <strong>AI Interpretation:</strong>
                   <div style={{ whiteSpace: 'pre-line' }}>
                     {d.ai_response ? d.ai_response : "None"}
