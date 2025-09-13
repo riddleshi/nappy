@@ -19,7 +19,7 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUniniti
 app.use(passport.session());
 
 app.use(cors({
-  origin: 'http://localhost:3000', // React dev server
+  origin: 'http://localhost:3000', 
   credentials: true
 }));
 
